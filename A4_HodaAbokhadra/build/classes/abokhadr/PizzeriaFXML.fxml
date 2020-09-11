@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="main" prefHeight="664.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/11.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="abokhadr.PizzeriaController">
+    <top>
+        <MenuBar prefHeight="7.0" prefWidth="614.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+            <Menu mnemonicParsing="false" text="File">
+                <items>
+                    <MenuItem fx:id="btnExit" mnemonicParsing="true" onAction="#getActions" text="_Exit" />
+                </items>
+            </Menu>
+        </MenuBar>
+    </top>
+    <left>      
+        <VBox fx:id="panePizza" prefHeight="273.0" prefWidth="220.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="pizzaLabel" alignment="TOP_LEFT" text="Pizza" />               
+                <fx:define>
+                    <ToggleGroup fx:id="grpPizza" />
+                </fx:define>       
+                <RadioButton fx:id="rbtSmall" mnemonicParsing="false" text="Small" toggleGroup="$grpPizza" />      
+                <RadioButton fx:id="rbtMedium" mnemonicParsing="false" text="Medium" toggleGroup="$grpPizza" />           
+                <RadioButton fx:id="rbtLarge" mnemonicParsing="false" text="Large" toggleGroup="$grpPizza" />          
+                <Label text="Number Of Pizzas:" />
+                <TextField fx:id="txtPizzaNum" alignment="TOP_LEFT" prefHeight="30.0" prefWidth="170.0" />
+            </children>
+            <BorderPane.margin>
+                <Insets top="15.0" />
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <VBox fx:id="paneToppings" prefHeight="230.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets top="15.0" />
+            </BorderPane.margin>
+            <children>
+                <Label fx:id="toppingsLabel" text="Toppings" />
+                <CheckBox fx:id="chkCheese" mnemonicParsing="false" text="Cheese" />  
+                <CheckBox fx:id="chkPepperoni" mnemonicParsing="false" text="Pepperoni" />             
+                <CheckBox fx:id="chkMushrooms" mnemonicParsing="false" text="Mushrooms" />            
+                <CheckBox fx:id="chkOlives" mnemonicParsing="false" text="Olives" />              
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </VBox>
+    </center>
+    <right>
+        <VBox fx:id="paneDrinks" prefHeight="273.0" prefWidth="220.0" spacing="15.0" BorderPane.alignment="TOP_RIGHT">
+            <children>
+                <Label fx:id="drinksLabel" alignment="CENTER" text="Drinks" />
+                <fx:define>
+                    <ToggleGroup fx:id="grpDrinks" />
+                </fx:define>          
+                <RadioButton fx:id="rbtCoke" mnemonicParsing="false" text="Coke"  toggleGroup="$grpDrinks"/>
+                <RadioButton fx:id="rbtJuice" mnemonicParsing="false" text="Juice" toggleGroup="$grpDrinks" />      
+                <RadioButton fx:id="rbtMilk" mnemonicParsing="false" text="Milk" toggleGroup="$grpDrinks" />             
+                <Label text="Number Of Drinks: " />              
+                <TextField fx:id="txtDrinksNum" prefHeight="30.0" prefWidth="170.0" />
+            </children>
+            <BorderPane.margin>
+                <Insets top="15.0" />
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </VBox>
+    </right>
+    <bottom>
+        <VBox fx:id="paneBottom" alignment="TOP_CENTER" prefHeight="370.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+            <Label fx:id="OrderedItems" text="Ordered Items" />
+                <TextArea fx:id="txaItems" prefHeight="319.0" prefWidth="576.0" />
+                <HBox fx:id="paneButtons" alignment="CENTER" prefHeight="78.0" prefWidth="600.0" spacing="100.0">
+                    <children>
+                        <Button fx:id="btnOK" alignment="CENTER" mnemonicParsing="false" onAction="#getActions" text=" OK " />                 
+                        <Button fx:id="btnCancel" alignment="CENTER" mnemonicParsing="false" onAction="#getActions" text=" Cancel " />
+                    </children>
+                </HBox>
+            </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+        </VBox>
+    </bottom>
+    <stylesheets>
+        <URL value="@styles.css" />        
+    </stylesheets>
+</BorderPane>
