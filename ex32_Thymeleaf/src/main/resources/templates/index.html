@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<style>
+body{ 
+    background-color: #ad81d3;
+    font-family: 'Kalam', cursive;
+    font-size: 20px;
+}
+
+form, table{
+    width: 500px;
+    border: 3px solid white;
+    box-shadow: 0 0 10px #2c2c2c;
+    padding: 30px;
+    margin: 50px auto;
+    color: white;
+    background-color: #0781b2;
+    border-radius: 20px;
+}
+
+label{
+    width: 170px;
+    display: inline-block;
+    font-size: 18px;
+    color: white;
+}
+input:not([type="radio"]), select{
+    font-size: 16px;
+    font-family: 'Kalam', cursive;
+    padding: 5px 10px;
+}
+input[type="submit"]{
+    width: 100%;
+    
+    font-size: 22px;
+    background-color: #bc2990;
+    color: white;
+    font-family: 'Kalam', cursive;
+    border: 0px;
+    padding: 10px;
+    height: 100%;
+    box-shadow: 4px 4px 0px #8c087a;
+    border-radius: 8px;
+    
+}
+input[type="submit"]:active{
+    box-shadow: -4px -4px 0px #8c087a;
+}
+</style>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<tr>
+<th>ID</th><th>Prefix</th><th>Code</th><th>Name</th>
+</tr>
+<tr th:each="aCourse :${courseList}">
+<td th:text="${aCourse.id}">55</td>
+<td th:text="${aCourse.prefix}">PROG</td>
+<td th:text="${aCourse.code}">55</td>
+<td th:text="${aCourse.name}">PROG</td>
+</tr>
+</table>
+
+<form method="post" action="#" th:action="@{/addCourse}">
+ID:<p>  </p> <input type="number" name="id" /><br> <p>  </p>
+Prefix: <p>  </p> <input type="text" name="prefix" /><br> <p>  </p>
+Code: <p>  </p><input type="number" name="code" /><br> <p>  </p>
+Name: <p>  </p><input type="text" name="name" /><br> <p>  </p>
+<p>  </p><input type="submit" value="Add Course!" />
+
+</form>
+</body>
+</html>

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ca.sheridancollege.abokhadr</groupId>
-	<artifactId>ex31_lombok</artifactId>
+	<artifactId>ex32_Thymeleaf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ex31_lombok</name>
+	<name>ex32_Thymeleaf</name>
 	<description>Produce a simple interactive web site displaying info</description>
 
 	<properties>

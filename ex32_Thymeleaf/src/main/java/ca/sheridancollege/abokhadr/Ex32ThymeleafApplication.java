@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Ex31LombokApplication {
+public class Ex32ThymeleafApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Ex31LombokApplication.class, args);
+		SpringApplication.run(Ex32ThymeleafApplication.class, args);
 	}
 
 }
