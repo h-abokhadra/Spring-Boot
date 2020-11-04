@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>My Wish List ^^</title>
+
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+</head>
+<body class ="bg-light">
+	<h1 class="container p-3 my-3 bg-dark text-white">Add to my List!</h1>
+	<div class="container p-3 my-3 bg-success text-white"></div>
+	<div class="container p-3 my-3 border">
+		<table th:if="${itemList != null AND itemList != ''}"
+			class="table table-dark">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Link</th>
+					<th scope="col">Description</th>
+					<th scope="col">Price</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="i : ${itemList}">
+					<td scope="row" th:text="${i.name}"></td>
+					<td scope="row" th:text="${i.link}"></td>
+					<!-- I'm not sure if I understood this point right, to make the url as a hyperlink?
+					
+					I tried to add the hyperlink but for some reason it didn't work :/
+					<td scope="row" ><a th:href="@{${i.link}}"></a>Product Link</td> -->
+					
+					<td scope="row" th:text="${i.description}"></td>
+					<td scope="row" th:text="${i.price}"></td>
+					<td scope="row"><a th:href="@{/editItemById/}+${i.id}">Edit</a></td>
+					<td scope="row"><a th:href="@{/deleteItemById/}+${i.id}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container p-3 my-3 bg-success text-white">
+		<form class="form-group" method="post" action=""
+			th:action="@{/insertItem}" th:object="${item}">
+			<input type="hidden" name="id" th:field="*{id}" /><br>
+			Name: <input class="form-control" placeholder="Enter Item name"
+				id="exampleFormControlInput1" type="text" name="name"
+				th:field="*{name}" /><br> 
+			Link: <input type="url" class="form-control" placeholder="https://www.amazon.ca"
+				id="exampleFormControlInput1" name="link" th:field="*{link}" /><br>
+			Description: <input class="form-control"
+				placeholder="Brief Description..." id="exampleFormControlInput1"
+				type="text" name="description" th:field="*{description}" /><br>
+			Price:<input class="form-control" type="number" step="0.01"
+				name="price" th:field="*{price}" /><br> <input
+				class="btn btn-dark btn-lg active" type="submit" value="Add Item!" /><br>
+		</form>
+	</div>
+</body>
+</html>
