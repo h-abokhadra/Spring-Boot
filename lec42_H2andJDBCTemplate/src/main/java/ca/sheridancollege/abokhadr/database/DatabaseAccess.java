@@ -23,6 +23,7 @@ public class DatabaseAccess {
 		if (rowsAffected > 0)
 			System.out.println("Inserted student into database.");
 	}
+	
 	public void insertStudent(Student student) {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		String query = "INSERT INTO student(name) VALUES (:name)";

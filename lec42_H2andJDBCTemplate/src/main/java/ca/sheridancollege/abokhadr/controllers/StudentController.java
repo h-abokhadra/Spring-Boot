@@ -20,7 +20,6 @@ public class StudentController {
 	public String index(Model model) {
 		
 		da.insertStudent();
-		
 		model.addAttribute("student", new Student());
 		return "index";
 	}
