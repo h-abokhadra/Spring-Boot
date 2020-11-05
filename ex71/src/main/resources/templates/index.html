@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+</head>
+<body class ="bg-light">
+	<h1 class="container p-3 my-3 bg-dark text-white">Phone List!</h1>
+	<div class="container p-3 my-3 bg-success text-white">
+
+	<div th:text="${session.myPhone}"></div>
+
+	<form class="form-group" method="post" th:action="@{/insertPhone}" th:object="${phone}">
+		<input type="hidden" name="id" th:field="*{id}" />
+		 Model: <input type="text" class="form-control" placeholder="Enter phone model" name="model" th:field="*{model}" /><br>
+		 Price: <input type="number" class="form-control" placeholder="Enter price" step="0.01" name="price" th:field="*{price}" /><br>
+		<input type="submit" value="Go!" />
+	</form>
+</div>
+<div class="container p-3 my-3 bg-light text-black">
+	<table th:if="${session.phoneList != null AND session.phoneList != ''}" class="table table-dark">
+		<thead>
+			<tr>
+				<th scope="col">Model</th>
+				<th scope="col">Price</th>
+			</tr>
+		</thead>
+		<tr th:each="ph : ${session.phoneList}">
+			<td scope="row" th:text="${ph.model}">Pixel5</td>
+			<td scope="row" th:text="${ph.price}">799.99</td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>
