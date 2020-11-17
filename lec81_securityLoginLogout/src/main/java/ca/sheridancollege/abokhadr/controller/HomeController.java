@@ -13,7 +13,13 @@ public class HomeController {
 
 	public String index() {
 
-	
 		return "index";
+}
+	
+	@GetMapping("/check")
+
+	public String check() {
+
+		return "check";
 }
 }
