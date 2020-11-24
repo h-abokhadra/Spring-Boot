@@ -21,4 +21,12 @@ public class DatabaseAccess {
 		String query = "SELECT * FROM student";
 		return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Student>(Student.class));
 	}
+	
+	public Student findById(Long id) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+		String query = "SELECT * FROM student WHERE id = :id";
+		namedParameters.addValue("id", id);
+		return jdbc.query(query, namedParameters, new
+		BeanPropertyRowMapper<Student>(Student.class)).get(0);
+		}
 }
