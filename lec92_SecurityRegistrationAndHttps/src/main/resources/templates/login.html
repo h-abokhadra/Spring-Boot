@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+</head>
+
+<body class="bg-light">
+	<h1 class="container p-3 my-3 bg-dark text-white">Please Login! ^^</h1>
+	<div class="text-center">
+	<img class = "img-responsive" src="../static/img/logo-login.jpg"
+		th:src="@{/img/logo-login.jpg}" width="100px" height="100px" />
+		</div>
+	<div class="container p-3 my-3 bg-success text-white">
+		<form class="form-group" method="post" th:action="@{/login}">
+			<div th:if="${param.error}">
+				<div class="error">Invalid username or password.</div>
+			</div>
+			<div>
+				Email: <input class="form-control" type="email" name="username" /><br> Password: <input
+					class="form-control" type="password" name="password" /><br> <input type="submit"
+					name="login-submit" value="Log In" />
+			</div>
+
+		</form>
+	</div>
+	<blockquote class="blockquote text-center">
+	<p class="mb-0">
+		<a href="/" th:href="@{/}">Back to home page</a>
+	</p>
+	<p class="mb-0">
+		<a href="/register" th:href="@{/register}">Create a new account!</a>
+	</p>
+	</blockquote>
+</body>
+</html>
