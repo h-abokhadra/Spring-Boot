@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Discussion Board</title>
+
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<!-- include jQuery using CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src=".../static/js/script.js" th:src="@{/js/script.js}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+
+</head>
+<body class="m-5">
+	<h2 class="container p-3 my-3 bg-dark text-white">Welcome
+		[[${email}]] to the Discussion Board!</h2>
+	<br>
+	<div class="mx-auto" style="width: 700px;">
+		<div class="m-5">
+
+			<div class="menu">
+				<ul>
+					<li><a href="#block1">First Thread: What is your favorite
+							programming language?</a><br></li>
+					<li><a href="#block2">Second Thread: Share the link of a
+							project you're proud of </a><br></li>
+					<li><a href="#block3">Third Thread: What courses are you
+							taking at the moment?</a><br></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<div class="mx-auto" style="width: 800px;">
+		<div id="topspacer"></div>
+
+		<div id="block1" class="block">
+			<!--Source: https://www.guru99.com/best-programming-language.html-->
+			<h3 class="border p-3 border-dark">First Thread: What is your
+				favorite programming language?</h3>
+			<h6 class="container m-5 p-3 my-3 bg-primary text-white">With
+				time old programming languages become obsolete while new programming
+				languages are launched, but they never gain traction. A common
+				question amongst beginners (and coders alike) is the programming
+				language they should invest learning in, that is in demand, stable
+				outlook, and plenty of jobs. Each programming language is designed
+				for a specific purpose and has its relative merits and demerits.
+				Also, the answer to the most useful programming language to learn is
+				subjective and depends on your familiarity with coding.
+				Irrespective, the following 3 parameters are essential to narrow a
+				language a choice.</h6>
+
+		
+
+		</div>
+
+		<div id="block2" class="block">
+			<h3 class="border p-3 border-dark">Second Thread: Share the link
+				of a project you're proud of</h3>
+			<h6 class="container m-5 p-3 my-3 bg-primary text-white">With
+				time old programming languages become obsolete while new programming
+				languages are launched, but they never gain traction. A common
+				question amongst beginners (and coders alike) is the programming
+				language they should invest learning in, that is in demand, stable
+				outlook, and plenty of jobs. Each programming language is designed
+				for a specific purpose and has its relative merits and demerits.
+				Also, the answer to the most useful programming language to learn is
+				subjective and depends on your familiarity with coding.
+				Irrespective, the following 3 parameters are essential to narrow a
+				language a choice.</h6>
+		</div>
+
+		<div id="block3" class="block">
+			<h3 class="border p-3 border-dark">Third Thread: What courses
+				are you taking at the moment?</h3>
+			<h6 class="container m-5 p-3 my-3 bg-primary text-white">With
+				time old programming languages become obsolete while new programming
+				languages are launched, but they never gain traction. A common
+				question amongst beginners (and coders alike) is the programming
+				language they should invest learning in, that is in demand, stable
+				outlook, and plenty of jobs. Each programming language is designed
+				for a specific purpose and has its relative merits and demerits.
+				Also, the answer to the most useful programming language to learn is
+				subjective and depends on your familiarity with coding.
+				Irrespective, the following 3 parameters are essential to narrow a
+				language a choice.</h6>
+		</div>
+	</div>
+	
+		<form method="post" action="" th:action="@{/insertComment}"
+				th:object="${comment}">
+				<input type="hidden" name="id" th:field="*{id}"/><br>
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Comment Title:</label> <input
+						type="text" name="title" th:field="*{title}" class="form-control"
+						id="exampleFormControlInput1" placeholder="Write a title!">
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Comment Body:</label>
+					<textarea class="form-control" name="subject" th:field="*{subject}"
+						id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
+				<label for="exampleFormControlInput1">Date&Time</label> <input
+					class="form-control" type="datetime-local" name="commentDateTime"
+					th:field="*{commentDateTime}" /><br>
+			</form>
+			
+			
+	<div class="mx-auto" style="width: 700px;">
+		<div class="border p-3 m-3 border-dark">
+			<p>
+				<a href="/" th:href="@{/}">Back to home page</a>
+			</p>
+			<p>
+				<a href="#" th:href="@{/logout}">Logout</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>
