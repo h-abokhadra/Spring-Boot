@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Thread Page</title>
+
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<!-- include jQuery using CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet" type="text/css" media="all"
+	href=".../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src=".../static/js/script.js" th:src="@{/js/script.js}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+</head>
+<body class="m-5">
+
+	<h2 class="container p-3 my-3 bg-dark text-white">View Thread!</h2>
+	<div class="mx-auto" style="width: 1000px;">
+
+		<div class="menu">
+			<ul>
+				<li><a href="#block1">Thread Section</a><br></li>
+				<li><a href="#block2">Comments Section</a><br></li>
+				<li><a href="#block3">Add your Comment</a><br></li>
+			</ul>
+		</div>
+		<div id="topspacer"></div>
+
+		<div id="block1" class="block">
+			<!--Source: https://www.guru99.com/best-programming-language.html-->
+			<div class="border p-3 m-3 border-dark">
+				<table th:if="${currentThread != null AND currentThread != ''}"
+					class="table table-bordered">
+					<tbody>
+						<h3 th:text="${currentThread.title}"></h3>
+						<hr>
+						<br>
+						<tr th:text="${currentThread.body}"></tr>
+						<br>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div id="block2" class="block">
+			<div class="container p-3 my-3 border">
+				<table th:if="${commentList != null AND commentList != ''}"
+					class="table table-bordered">
+
+					<tbody>
+						<ul class="list-group p-3" th:each="c : ${commentList}">
+							<h4>Comment Section:</h4>
+							<br>
+							<hr>
+							<h6>Wrote by</h6>
+							<li class="list-group-item" th:text="${c.userName}"></li>
+							<br>
+							<h6>Comment body</h6>
+							<li class="list-group-item p-3" th:text="${c.subject}"></li>
+							<br>
+							<hr>
+							<h6>Wrote on</h6>
+							<li class="list-group-item" th:text="${c.commentDateTime}"></li>
+						</ul>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="block3" class="block">
+			<div class="container p-3 my-3 bg-dark text-white">
+				<h4>Add Comments!</h4>
+				<hr>
+				<br>
+				<form class="form-group" method="post" action=""
+					th:action="@{/insertComment}" th:object="${comment}">
+					<!--  <input type="hidden" name="id" th:field="*{id}"/><br>-->
+					<input type="hidden" name="threadId"
+						th:field="${currentThread.threadId}" /><br> User Name:<input
+						class="form-control" placeholder="write your username .."
+						id="exampleFormControlInput1" type="text" name="userName"
+						th:field="*{userName}" /><br> Subject:
+					<textarea class="form-control" placeholder="Enter your comment!"
+						id="exampleFormControlTextarea1" rows="3" name="subject"
+						th:field="*{subject}"></textarea>
+					<br> Date & Time: <input class="form-control"
+						type="datetime-local" name="commentDateTime"
+						th:field="*{commentDateTime}" /><br> <input
+						class="btn btn-info btn-lg primary" type="submit"
+						value="Add Comment!" /><br>
+
+				</form>
+			</div>
+		</div>
+		<div class="border p-3 m-3 border-dark">
+		<blockquote class="blockquote text-center">
+			<p class="mb-0">
+				<a href="/" th:href="@{/}">Back to home page</a>
+			</p>
+			<p class="mb-0">
+				<a href="#" th:href="@{/logout}">Logout</a>
+			</p>
+			</blockquote>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Discussion Board</title>
+
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<!-- include jQuery using CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src=".../static/js/script.js" th:src="@{/js/script.js}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+
+</head>
+<body class="m-5">
+	<h2 class="container p-3 my-3 bg-dark text-white">Welcome
+		[[${email}]] to the forum!</h2>
+	<br>
+	<div class="mx-auto" style="width: 1000px;">
+	
+		<div class="border p-3 m-3 border-dark">
+		
+			<h3>Discussion Board</h3><hr><br>
+			<table th:if="${threadList != null AND threadList != ''}"
+			class="table table-bordered">
+			<tbody>
+				<tr th:each="thr : ${threadList}">
+					<td scope="row" th:text="${thr.title}"></td>
+					<td scope="row"><a th:href="@{/getThreadById/}+${thr.threadId}">Click here!</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		</div>
+		
+		<div class="border p-3 m-3 border-dark">
+			<p>
+				<a href="/" th:href="@{/}">Back to home page</a>
+			</p>
+			<p>
+				<a href="#" th:href="@{/logout}">Logout</a>
+			</p>
+		</div>
+	
+	</div>
+</body>
+</html>
