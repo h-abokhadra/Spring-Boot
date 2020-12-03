@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert an Appointment!</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1 class="container p-3 my-3 bg-dark text-white">Insert an Appointment!</h1>
+		<header th:insert="./fragments/header.html :: header"></header>
+		<div th:replace="${admin} ? ~{./fragments/menu.html :: div.menu-admin} : ~{./fragments/menu.html :: div.menu}"></div>
+	
+	<div class="container p-3 my-3 bg-info text-white">
+	
+	</div>
+	<div class="container p-3 my-3 border">
+		<table th:if="${appointmentList != null AND appointmentList != ''}"
+			class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">First Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Appointment Date</th>
+					<th scope="col">Appointment Time</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="a : ${appointmentList}">
+					<td scope="row" th:text="${a.firstName}"></td>
+					<td scope="row" th:text="${a.email}"></td>
+					<td scope="row" th:text="${a.appointmentDate}"></td>
+					<td scope="row" th:text="${a.appointmentTime}"></td>
+					<td scope="row"><a th:href="@{/editAppointmentById/}+${a.id}">Edit</a></td>
+					<td scope="row"><a th:href="@{/deleteAppointmentById/}+${a.id}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container p-3 my-3 bg-info text-white">
+		<form class="form-group" method="post" action=""
+			th:action="@{/insertAppointment}" th:object="${appointment}">
+			<input type="hidden" name="id" th:field="*{id}" /><br>
+			First Name: <input class="form-control"
+				placeholder="Enter first name" id="exampleFormControlInput1"
+				type="text" name="firstName" th:field="*{firstName}" /><br>
+			Email: <input class="form-control"
+				placeholder="hoda@sheridan.com"
+				id="exampleFormControlInput1" type="email" name="email"
+				th:field="*{email}" /><br>
+				 <input
+				class="form-control" type="hidden" name="appointmentDate"
+				th:field="*{appointmentDate}" /><br>
+				 <input
+				class="form-control" type="hidden" name="appointmentTime"
+				th:field="*{appointmentTime}" /><br>
+			<input class="btn btn-dark btn-lg active" type="submit"
+				value="Add Appointment!" /><br>
+		</form>
+	</div>
+		<footer th:replace="./fragments/footer.html :: footer"></footer>
+	
+</body>
+</html>

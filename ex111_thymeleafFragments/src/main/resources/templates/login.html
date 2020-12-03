@@ -29,32 +29,29 @@ https://getbootstrap.com/
 <body class="bg-light">
 	<h1 class="container p-3 my-3 bg-dark text-white">Please Login! ^^</h1>
 	<div class="text-center">
-
-		<!-- Image src : https://teslathemes.com/blog/wordpress-login-plugins/ -->
-		<img class="img-responsive" src="../static/img/logo_login.png"
-			th:src="@{/img/logo_login.png}" />
-	</div>
-	<div class="container p-3 my-3 bg-dark text-white">
+	<img class = "img-responsive" src="../static/img/logo-login.jpg"
+		th:src="@{/img/logo-login.jpg}" width="100px" height="100px" />
+		</div>
+	<div class="container p-3 my-3 bg-success text-white">
 		<form class="form-group" method="post" th:action="@{/login}">
 			<div th:if="${param.error}">
 				<div class="error">Invalid username or password.</div>
 			</div>
 			<div>
-				Email: <input class="form-control" type="email"  name="username" /><br>
-				Password: <input class="form-control" type="password" name="password" /><br>
-				<input class="btn btn-primary" type="submit" name="login-submit"
-					value="Log In" />
+				Email: <input class="form-control" type="email" value = "abokhadr@sheridancollege.ca" name="username" /><br> Password: <input
+					class="form-control" type="password" name="password"  value = "1234"/><br> <input type="submit"
+					name="login-submit" value="Log In" />
 			</div>
 
 		</form>
 	</div>
 	<blockquote class="blockquote text-center">
-		<p class="mb-0">
-			<a href="/" th:href="@{/}">Back to home page</a>
-		</p>
-		<p class="mb-0">
-			<a href="/register" th:href="@{/register}">Create a new account!</a>
-		</p>
+	<p class="mb-0">
+		<a href="/" th:href="@{/}">Back to home page</a>
+	</p>
+	<p class="mb-0">
+		<a href="/register" th:href="@{/register}">Create a new account!</a>
+	</p>
 	</blockquote>
 </body>
 </html>
