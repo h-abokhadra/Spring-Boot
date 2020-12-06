@@ -1,5 +1,6 @@
 package ca.sheridancollege.abokhadr.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +15,21 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ContactController {
 
+	@Autowired
 	private DatabaseAccess da;
 	
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute("student", new Contact());
-		model.addAttribute("studentList", da.getStudentList());
+		model.addAttribute("contact", new Contact());
+		model.addAttribute("contactList", da.getContactList());
 		return "index";
 	}
 	
-	@PostMapping("insertStudent")
-	public String insertStudent(Model model, @ModelAttribute Contact student) {
-		da.insertStudent(student);
-		model.addAttribute("student", new Contact());
-		model.addAttribute("studentList", da.getStudentList());
+	@PostMapping("insertContact")
+	public String insertStudent(Model model, @ModelAttribute Contact contact) {
+		da.insertContact(contact);
+		model.addAttribute("contact", new Contact());
+		model.addAttribute("contactList", da.getContactList());
 		return "index";
 	}
 	

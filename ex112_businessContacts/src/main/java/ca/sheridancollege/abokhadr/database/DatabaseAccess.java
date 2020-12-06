@@ -18,19 +18,19 @@ public class DatabaseAccess {
 	@Autowired
 	private NamedParameterJdbcTemplate jdbc;
 
-	public List<Contact> getStudentList() {
+	public List<Contact> getContactList() {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 
-		String query = "SELECT * FROM student";
+		String query = "SELECT * FROM contact";
 
 		return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Contact>(Contact.class));
 	}
 
-	public void insertStudent(Contact student) {
+	public void insertContact(Contact contact) {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 
-		String query = "INSERT INTO student(name) VALUES(:name)";
-		namedParameters.addValue("name", student.getName());
+		String query = "INSERT INTO contact(firstName) VALUES(:firstName)";
+		namedParameters.addValue("name", contact.getFirstName());
 
 		jdbc.update(query, namedParameters);
 	}
