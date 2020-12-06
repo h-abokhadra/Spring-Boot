@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Student {
+public class Contact {
 
 	private Long id;
 	private String name;
