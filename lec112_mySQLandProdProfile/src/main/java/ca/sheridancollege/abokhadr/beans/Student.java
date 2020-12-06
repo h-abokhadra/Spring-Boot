@@ -1,4 +1,4 @@
-package ca.sheridancollege.hoodsi.beans;
+package ca.sheridancollege.abokhadr.beans;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

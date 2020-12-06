@@ -1,4 +1,4 @@
-package ca.sheridancollege.hoodsi;
+package ca.sheridancollege.abokhadr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package ca.sheridancollege.hoodsi.database;
+package ca.sheridancollege.abokhadr.database;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import ca.sheridancollege.hoodsi.beans.Student;
+import ca.sheridancollege.abokhadr.beans.Student;
 import lombok.AllArgsConstructor;
 
 @Repository
