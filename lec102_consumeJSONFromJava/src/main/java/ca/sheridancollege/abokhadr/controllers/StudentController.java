@@ -2,6 +2,7 @@ package ca.sheridancollege.abokhadr.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,26 @@ public class StudentController {
 		da.saveAll(studentList);
 		return "Total Records: " + da.count();
 	}
+	
+	@PutMapping(value = "/{id}",consumes = "application/json")
+	public Long putStudent(@RequestBody Student student, @PathVariable Long id) {
+		da.deleteById(id);
+		student.setId(id);
+		return da.saveById(student);
+	}
+	
+	@DeleteMapping (value = "/{id}")
+	public String deleteStudent(@PathVariable Long id) {
+		 da.deleteById(id);
+		return " Item " + id + " deleted. ";
+	}
+	
+	@DeleteMapping ()
+	public String deleteStudentCollection() {
+		 da.deleteAll();
+		return " Collection  deleted. ";
+	}
+
 	
 	
 }

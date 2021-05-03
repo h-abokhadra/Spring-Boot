@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+<!-- Bootstrap source 
+https://getbootstrap.com/
+ -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<!-- include jQuery using CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet" type="text/css" media="all"
+	href=".../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src=".../static/js/script.js" th:src="@{/js/script.js}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+</head>
+</head>
+<body class="m-5">
+  	<h1 class="container p-3 my-3 bg-dark text-white">View My Events</h1>
+	<h3 class=container p-4 m-3 bg-dark text-white style="width: 1000px; " th:each="ev : ${eventList}">
+		<a href="#" th:onclick="'getEvent('+ ${ev.id} + ')'"
+			th:text="${ev.title}"></a>
+		<div th:id="'event' + ${ev.id}"></div>
+	</h3>
+
+	<div class="container p-3 my-3 bg-info text-white">
+		<form class="form-group" method="post" action=""th:action="@{/insertEvent}" th:object="${event}">
+		<input type="hidden" name="id" th:field="*{id}" /><br> 
+			Title: <input class="form-control"
+				placeholder="Enter a title ... " id="exampleFormControlInput1"
+				type="text" name="title" th:field="*{title}" /><br>
+			Guests: <input class="form-control"
+				placeholder="Simon"
+				id="exampleFormControlInput1" type="text" name="guests"
+				th:field="*{guests}" /><br>
+			Description: <input class="form-control"
+			    placeholder="Enter first name" id="exampleFormControlInput1"
+			    type="text" name="description" th:field="*{description}" /><br>
+			Date:<input
+				class="form-control" type="date" name="eventDate"
+				th:field="*{eventDate}" /><br>
+			Time:<input
+				class="form-control" type="time" name="eventTime"
+				th:field="*{eventTime}" /><br>
+			<input class="btn btn-dark btn-lg active" type="submit"
+				value="Add Event!" /><br>
+		</form>
+	</div> 
+</body>
+</html>

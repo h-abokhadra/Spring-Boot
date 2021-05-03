@@ -61,4 +61,22 @@ public class DatabaseAccess {
 			save(s);
 		}
 	}
+	
+	public void deleteById(Long id) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+		String query = "DELETE FROM student WHERE id = :id";
+		namedParameters.addValue("id", id);
+		jdbc.update(query, namedParameters);
+	}
+	
+	public Long saveById(Student student) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+		KeyHolder generatedKeyHolder = new GeneratedKeyHolder();
+		String query = "INSERT INTO student (id, name) VALUES (:id, :name)";
+		namedParameters.addValue("id",student.getId());
+		namedParameters.addValue("name",student.getName());
+		jdbc.update(query, namedParameters, generatedKeyHolder);
+		return (Long) generatedKeyHolder.getKey();
+	}
+	
 }

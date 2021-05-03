@@ -1,0 +1,8 @@
+CREATE TABLE event(
+id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(150),
+guests VARCHAR(150),
+description MEDIUMTEXT,
+eventDate DATE,
+eventTime TIME
+);
